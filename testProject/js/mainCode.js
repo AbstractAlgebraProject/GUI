@@ -1,16 +1,26 @@
 function addItems(idName, textValue) {
-    $(idName).append('<li><a href="#">' + textValue + '</a></li>'); 
+    "use strict";
+    $(idName).append('<li><a href="#">' + textValue + '</a></li>');
     //This adds a new list item with text
 }
 
 function addDropdown(navbarId, title, dropdownId) {
-    $(navbarId).append('<li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">' + title +  '<span class="caret"></span></a> <ul class="dropdown-menu" id="' + dropdownId + '"> </ul> </li>'); 
+    "use strict";
+    $(navbarId).append('<li class="dropdown"> <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">' + title +  '<span class="caret"></span></a> <ul class="dropdown-menu" id="' + dropdownId + '"> </ul> </li>');
 }
 
-$(addItems("#drop", "hi"));
-$(addDropdown("#dynamicNav", "Test", "Thing"));
-$(addItems("#Thing", "hello"));
-$(addItems("#Thing", "world"));
+function addButton(idName, title, buttonid) {
+    "use strict";
+    $(idName).append('<button class="btn btn-primary" type="button" id="' + buttonid + '">' + title + '</button>');
+}
+
+addItems("#drop", "hi");
+addItems("#Thing", "hello");
+addItems("#Thing", "world");
+document.getElementById("dynamicNav").id = "testNav";
+addDropdown("#testNav", "Test", "Thing");
+addButton("#bodyid", "JavaScript", "javascriptButton");
+
 
 /*$('#dropButton').on('click', function (e){ //When button is clicked
     var inputText = document.getElementById('searchBar').value; //This gets value from <input>
