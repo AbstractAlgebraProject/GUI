@@ -17,18 +17,26 @@ function addDropdown(idName, title, dropdownId, listId, xPosition, yPosition) {
     document.getElementById(listId).style.marginLeft = xPosition - checkX + "px";
 }
 
+//function getDropdownSelection()
+function cb() {
+	alert("works");
+}
+
 //addButton is simpler version of addDropdown
-function addButton(idName, title, buttonid, xPosition, yPosition) {
+function addButton(idName, title, buttonid, xPosition, yPosition, size, callback) {
     "use strict";
-    $(idName).append('<button class="btn btn-test" type="button" id="' + buttonid + '">' + title + '</button>');
+    $(idName).append('<button class="btn btn-test ' + size + '"type="button" id="' + buttonid + '">' + title + '</button>');
     var checkY = document.getElementById(buttonid).offsetTop, checkX = document.getElementById(buttonid).offsetLeft;
     document.getElementById(buttonid).style.marginLeft = xPosition - checkX + "px";
     document.getElementById(buttonid).style.marginTop = yPosition - checkY + "px";
+	document.getElementById(buttonid)
+	$('#' + buttonid).on('click', callback);
 }
 
 addDropdown("#bodyid", "Test", "freeDropdown", "freeList", 100, 100);
 addItems("#freeList", "Yo this is cool!");
-addButton("#bodyid", "JavaScript", "javascriptButton", 300, 400);
+addItems("#freeList", "Yo yo yo!!!!");
+addButton("#bodyid", "JavaScript", "javascriptButton", 300, 400, "btn-lg", cb);
 
 var yPosition = document.getElementById("javascriptButton").offsetTop;
 var xPosition = document.getElementById("javascriptButton").offsetLeft;
