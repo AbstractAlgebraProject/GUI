@@ -45,19 +45,24 @@ function addButton(idName, title, buttonid, xPosition, yPosition, size, callback
     $('#' + buttonid).on('click', callback);
 }
 
-function addTextField(idName, width, placeholder, inputid, xPosition, yPosition) {
+function addTextField(idName, width, placeholder, inputid, xPosition, yPosition, callback) {
     "use strict";
-    $(idName).append('<div class="input-group" style="width: ' + width + ';" id="' + inputid + '"><span class="input-group-btn"><button class="btn btn-default" type="button">Go!</button></span><input type="text" class="form-control" placeholder="' + placeholder + '" aria-describedby="sizing-addon1"></div>');
-    var checkY = document.getElementById(inputid).offsetTop, checkX = document.getElementById(inputid).offsetLeft;
-    document.getElementById(inputid).style.marginLeft = xPosition - checkX + "px";
-    document.getElementById(inputid).style.marginTop = yPosition - checkY + "px";
+    function thisCallback() {
+        $("#" + inputid + "-input").val("");
+        cb();
+    }
+    $(idName).append('<div class="input-group" style="width: ' + width + ';" id="' + inputid + '-div"><span class="input-group-btn"><button class="btn btn-default" type="button" id="' + inputid + '-button">Go!</button></span><input type="text" class="form-control" placeholder="' + placeholder + '" id="' + inputid + '-input" aria-describedby="sizing-addon1"></div>');
+    var checkY = document.getElementById(inputid + "-div").offsetTop, checkX = document.getElementById(inputid + "-div").offsetLeft;
+    document.getElementById(inputid + "-div").style.marginLeft = xPosition - checkX + "px";
+    document.getElementById(inputid + "-div").style.marginTop = yPosition - checkY + "px";
+    $('#' + inputid + "-button").on('click', thisCallback);
 }
 
 addDropdown("#bodyid", "Test", "freeDropdown", "freeList", 100, 100);
 addItems("#freeList", "Yo this is cool!");
 addItems("#freeList", "Yo yo yo!!!!");
 addButton("#bodyid", "JavaScript", "javascriptButton", 300, 400, "btn-lg", cb);
-addTextField("#bodyid", "100px", "Test Placeholder", "testPlaceholder", 0, 425);
+addTextField("#bodyid", "300px", "Test Placeholder", "testPlaceholder", 100, 425);
 
 addDropListener("#bodyId", "freeList")
 
