@@ -40,12 +40,12 @@ function addButton(idName, title, buttonid, xPosition, yPosition, size, callback
     document.getElementById(buttonid).style.marginLeft = xPosition - checkX + "px";
     document.getElementById(buttonid).style.marginTop = yPosition - checkY + "px";
 	document.getElementById(buttonid)
-	$('#' + buttonid).on('click', callback);
+    $('#' + buttonid).on('click', callback);
 }
 
-function addTextField(idName, placeholder, inputid, xPosition, yPosition) {
+function addTextField(idName, width, placeholder, inputid, xPosition, yPosition) {
     "use strict";
-    $(idName).append('<div class="input-group" id="' + inputid + '"><span class="input-group-btn"><button class="btn btn-default" type="button">Go!</button></span><input type="text" class="form-control" placeholder="' + placeholder + '" aria-describedby="sizing-addon1"></div>');
+    $(idName).append('<div class="input-group" style="width: ' + width + ';" id="' + inputid + '"><span class="input-group-btn"><button class="btn btn-default" type="button">Go!</button></span><input type="text" class="form-control" placeholder="' + placeholder + '" aria-describedby="sizing-addon1"></div>');
     var checkY = document.getElementById(inputid).offsetTop, checkX = document.getElementById(inputid).offsetLeft;
     document.getElementById(inputid).style.marginLeft = xPosition - checkX + "px";
     document.getElementById(inputid).style.marginTop = yPosition - checkY + "px";
@@ -55,7 +55,7 @@ addDropdown("#bodyid", "Test", "freeDropdown", "freeList", 100, 100);
 addItems("#freeList", "Yo this is cool!");
 addItems("#freeList", "Yo yo yo!!!!");
 addButton("#bodyid", "JavaScript", "javascriptButton", 300, 400, "btn-lg", cb);
-addTextField("#bodyid", "Test Placeholder", "testPlaceholder", 0, 425);
+addTextField("#bodyid", "100px", "Test Placeholder", "testPlaceholder", 0, 425);
 
 var yPosition = document.getElementById("javascriptButton").offsetTop;
 var xPosition = document.getElementById("javascriptButton").offsetLeft;
