@@ -1,6 +1,6 @@
 function addItems(idName, textValue) {
     "use strict";
-    $(idName).append('<li><a href="#">' + textValue + '</a></li>');
+   $(idName).append("<li><a href=\"#\">" + textValue + "</a></li>");
     //This adds a new list item with text
 }
 
@@ -16,13 +16,15 @@ function addDropdown(idName, title, dropdownId, listId, xPosition, yPosition) {
     document.getElementById(dropdownId).style.marginTop = yPosition - checkY + "px";
     document.getElementById(listId).style.marginLeft = xPosition - checkX + "px";
 
-	$("." + listId + " li a").click(function(){
-		alert("hello");
-		//$("." + dropdownId ":first-child").html($(this).text()+' <span class="caret"></span>');
-  
-	});
 }
 
+function addDropListener(idName, dropdownId){
+	
+	$('#'+dropdownId+' li a').on('click', function(){
+    	var selText = $(this).text(); 
+    	alert(selText);
+	});
+}
 
 
 
@@ -56,6 +58,9 @@ addItems("#freeList", "Yo this is cool!");
 addItems("#freeList", "Yo yo yo!!!!");
 addButton("#bodyid", "JavaScript", "javascriptButton", 300, 400, "btn-lg", cb);
 addTextField("#bodyid", "100px", "Test Placeholder", "testPlaceholder", 0, 425);
+
+addDropListener("#bodyId", "freeList")
+
 
 var yPosition = document.getElementById("javascriptButton").offsetTop;
 var xPosition = document.getElementById("javascriptButton").offsetLeft;
