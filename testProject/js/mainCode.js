@@ -48,6 +48,7 @@ function addButton(idName, title, buttonid, xPosition, yPosition, size, callback
 function addTextField(idName, width, placeholder, inputid, xPosition, yPosition, callback) {
     "use strict";
     function thisCallback() {
+        document.getElementById("inputDemo").innerHTML = document.getElementById(inputid + "-input").value;
         $("#" + inputid + "-input").val("");
         cb();
     }
