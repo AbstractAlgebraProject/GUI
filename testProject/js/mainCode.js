@@ -1,6 +1,6 @@
 function addItems(idName, textValue) {
     "use strict";
-    $(idName).append('<li>' + textValue + '</li>');
+    $(idName).append('<li><a href="#">' + textValue + '</a></li>');
     //This adds a new list item with text
 }
 
@@ -10,12 +10,21 @@ function addItems(idName, textValue) {
 //xPosition and yPosition position the dropdown
 function addDropdown(idName, title, dropdownId, listId, xPosition, yPosition) {
     "use strict";
-    $(idName).append('<div class="dropdown"> <button class="btn btn-default dropdown-toggle" type="button" id="' + dropdownId + '" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' + title +  '<span class="caret"></span></button> <ul class="dropdown-menu" id="' + listId + '"> </ul> </div>');
+    $(idName).append('<div class="btn-group"> <button class="btn btn-default dropdown-toggle" type="button" id="' + dropdownId + '" href="#" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">' + title +  '<span class="caret"></span></button> <ul class="dropdown-menu" id="' + listId + '"> </ul> </div>');
     var checkY = document.getElementById(dropdownId).offsetTop, checkX = document.getElementById(dropdownId).offsetLeft;
     document.getElementById(dropdownId).style.marginLeft = xPosition - checkX + "px";
     document.getElementById(dropdownId).style.marginTop = yPosition - checkY + "px";
     document.getElementById(listId).style.marginLeft = xPosition - checkX + "px";
+
+	$("." + listId + " li a").click(function(){
+		alert("hello");
+		//$("." + dropdownId ":first-child").html($(this).text()+' <span class="caret"></span>');
+  
+	});
 }
+
+
+
 
 //function getDropdownSelection()
 function cb() {
